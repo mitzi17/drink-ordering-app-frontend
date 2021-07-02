@@ -1,3 +1,9 @@
 export default function orderReducer( state= { orders: [] }, action ) {
-    return state
+
+    switch (action.type) {
+        case 'FETCH_ORDERS':
+            return {orders: action.payload}
+        default:
+            return state
+    }
 }
