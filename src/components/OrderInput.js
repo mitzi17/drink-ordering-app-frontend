@@ -1,14 +1,35 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import { createOrder } from '../actions/createOrder'
 
 class OrderInput extends React.Component {
+
+    state= {
+        date: ''
+    }
+
+    handleChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit = event => {
+        event.preventDefault()
+        this.props.createOrder(this.state)
+    }
 
     render() {
         return(
             <div>
-              OrderInput  
+              <form onSubmit={this.handleSubmit}>
+                <label>Select a date: </label>
+                <input type="datetime-local" name="date" value={this.state.date} onChange={this.handleChange} />
+                <input type="submit"/>
+              </form>  
             </div>
         )
     }
 }
 
-export default OrderInput
+export default connect(null, {createOrder})(OrderInput)
