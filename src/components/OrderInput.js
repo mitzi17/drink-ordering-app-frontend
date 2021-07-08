@@ -17,6 +17,9 @@ class OrderInput extends React.Component {
     handleSubmit = event => {
         event.preventDefault()
         this.props.createOrder(this.state)
+        this.setState({
+            date: ''
+        })
     }
 
     render() {
