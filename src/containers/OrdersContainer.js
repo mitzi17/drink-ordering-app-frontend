@@ -2,7 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { fetchOrders } from '../actions/fetchOrders'
 import OrderInput from '../components/OrderInput'
-import OrderList from '../components/OrderList'
+import OrdersList from '../components/OrdersList'
+import OrderShow from '../components/OrderShow'
+import { Route } from 'react-router-dom'
 
 class OrdersContainer extends React.Component {
 
@@ -13,8 +15,9 @@ class OrdersContainer extends React.Component {
     render() {
         return(
             <div>
-              <OrderInput />
-              <OrderList orders={this.props.orders}/>
+            <Route path='/orders/new' component={OrderInput} />
+            <Route path='/orders/:id' render={ (routerProps) => <OrderShow {...routerProps} orders={this.props.orders} />} />
+            <Route exact path='/orders' render={ () => <OrdersList orders={this.props.orders} /> }/>
             </div>
         )
     }
