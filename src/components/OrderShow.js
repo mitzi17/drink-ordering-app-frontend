@@ -1,4 +1,6 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
+import DrinksContainer from '../containers/DrinksContainer'
 
 const OrderShow = props => {
     console.log(props)
@@ -6,9 +8,12 @@ const OrderShow = props => {
     let order = props.orders[props.match.params.id - 1 ]
 
     return(
-        <li>
-           Order #: { order ? order.id : null } - { order ? order.date : null }
-        </li>
+        <div>
+            <h1>
+                Order #: { order ? order.id : null } - { order ? order.date : null }
+            </h1>
+            <DrinksContainer order={order} />
+        </div>
     )
 }
 
