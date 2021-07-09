@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router } from 'react-router-dom'
+import { Router, Link } from 'react-router-dom'
 import OrderShow from './OrderShow'
 
 const OrdersList = props => {
@@ -7,7 +7,9 @@ const OrdersList = props => {
     return(
         <div>
             {props.orders.map(order =>
-                <div key={order.id}> <OrderShow order={order}/> </div>)}
+                <li key={order.id}>
+                    <Link to={`/orders/${order.id}`}>Order #: {order.id} - {order.date}</Link> 
+                </li>)}
         </div>
     )
 }
