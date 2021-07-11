@@ -7,8 +7,8 @@ class DrinksContainer extends React.Component {
     render() {
         return (
             <div>
-                <DrinkForm/>
-                <DrinksList drinks={this.props.order && this.props.order.drinks}/>
+                <DrinkForm order={this.props.order}/>
+                <DrinksList drinks={this.props.order && this.props.order.drinks} />
             </div>
         )
     }
