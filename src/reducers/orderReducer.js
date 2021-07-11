@@ -5,6 +5,15 @@ export default function orderReducer( state= { orders: [] }, action ) {
             return {orders: action.payload}
         case 'CREATE_ORDER':
             return {...state, orders: [...state.orders, action.payload]}
+        case 'CREATE_DRINK':
+            let orders = state.orders.map(order => {
+                if (order.id === action.payload.id) {
+                    return action.payload
+                } else {
+                    return order
+                }
+            })
+            return {...state, orders: orders}
         default:
             return state
     }
