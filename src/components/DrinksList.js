@@ -1,6 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { deleteDrink } from '../actions/deleteDrink'
 
 const DrinksList = props => {
+
+    const handleRemoveDrink = drink => {
+        props.deleteDrink(drink.id, drink.order_id)
+    }
     
     return(
         <div>
@@ -13,6 +19,7 @@ const DrinksList = props => {
                             <li>Flavor: {drink.flavor}<br></br></li>
                             <li>Size: {drink.size}<br></br></li>
                             <li>Add_on: {drink.add_on}</li>
+                            <button onClick={() => handleRemoveDrink(drink)}>Remove Drink</button>
                     </div>
                     )}
             </div>
@@ -21,4 +28,4 @@ const DrinksList = props => {
     )
 }
 
-export default DrinksList
+export default connect(null, {deleteDrink})(DrinksList)
