@@ -14,6 +14,16 @@ export default function orderReducer( state= { orders: [] }, action ) {
                 }
             })
             return {...state, orders: orders}
+        case 'DELETE_DRINK':
+            let ordersDeleteDrink = state.orders.map(order => {
+                if (order.id === action.payload.id) {
+                    return action.payload
+                } else {
+                    return order
+                }
+            })
+            return {...state, orders: ordersDeleteDrink}
+
         default:
             return state
     }
