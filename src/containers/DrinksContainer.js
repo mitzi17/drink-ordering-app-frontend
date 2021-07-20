@@ -8,6 +8,7 @@ class DrinksContainer extends React.Component {
         return (
             <div>
                 <DrinkForm order={this.props.order}/>
+                <br></br>
                 <DrinksList drinks={this.props.order && this.props.order.drinks} />
             </div>
         )
